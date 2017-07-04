@@ -13,11 +13,12 @@ var dbConfig = {
 };
 
 const db = () => {
-	mongoose.connect(dbConfig.uri, dbConfig.opts);
+	console.log("db ini");
+	mongoose.connect(dbConfig.uri);
 
 	mongoose.set('debug', true);
 	
-	mongoose.connection.on('connected',  () => {
+	mongoose.connection.once('open',  () => {
 		this.state = 'connected';
 			console.log('Mongoose default connection open to ' + dbConfig.uri);
 	});

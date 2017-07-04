@@ -21,6 +21,7 @@ class PostService {
 	addPost(post){
 		var d = new Date();
 		post.date = d.toLocaleDateString();
+		console.log("post", post);
 		return postRepository.add(post);
 	}
 }
