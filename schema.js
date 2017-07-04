@@ -13,9 +13,9 @@ const postService = require('./app/entities/posts/postService');
 var idCounter = 1;
 
 var CommentType = new GraphQLObjectType({
-  name: 'comment',
+  name: 'Comment',
   fields: () => ({
-    userName: {
+    user: {
       type: GraphQLInt,
       description: 'comment userName'
     },
@@ -31,7 +31,7 @@ var CommentType = new GraphQLObjectType({
 });
 
 var PostType = new GraphQLObjectType({
-  name: 'post',
+  name: 'Post',
   fields: () => ({
     id: {
       type: GraphQLString,
@@ -119,59 +119,6 @@ var MutationAdd = {
   }
 };
 
-// var MutationToggle = {
-//   type: new GraphQLList(PostType),
-//   description: 'Toggle the todo',
-//   args: {
-//     id: {
-//       name: 'Post Id',
-//       type: new GraphQLNonNull(GraphQLInt)
-//     }
-//   },
-//   resolve: (root, args) => {
-//     TODOs
-//       .filter((todo) => todo.id === args.id)
-//       .forEach((todo) => todo.completed = !todo.completed)
-//     return TODOs;
-//   }
-// };
-
-// var MutationDestroy = {
-//   type: new GraphQLList(PostType),
-//   description: 'Destroy the todo',
-//   args: {
-//     id: {
-//       name: 'Post Id',
-//       type: new GraphQLNonNull(GraphQLInt)
-//     }
-//   },
-//   resolve: (root, args) => {
-//     return TODOs = TODOs.filter((todo) => todo.id !== args.id);
-//   }
-// };
-
-// var MutationToggleAll = {
-//   type: new GraphQLList(PostType),
-//   description: 'Toggle all todos',
-//   args: {
-//     checked: {
-//       name: 'Post Id',
-//       type: new GraphQLNonNull(GraphQLBoolean)
-//     }
-//   },
-//   resolve: (root, args) => {
-//     TODOs.forEach((todo) => todo.completed = args.checked)
-//     return TODOs;
-//   }
-// };
-
-// var MutationClearCompleted = {
-//   type: new GraphQLList(PostType),
-//   description: 'Clear completed',
-//   resolve: () => {
-//     return TODOs = TODOs.filter((todo) => !todo.completed)
-//   }
-// };
 
 // var MutationSave = {
 //   type: new GraphQLList(PostType),
@@ -198,11 +145,7 @@ var MutationType = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
     add: MutationAdd,
-    // toggle: MutationToggle,
-    // toggleAll: MutationToggleAll,
-    // destroy: MutationDestroy,
-    // clearCompleted: MutationClearCompleted,
-    // save: MutationSave
+    //save: MutationSave
   }
 });
 

@@ -8,7 +8,7 @@ const Post = new mongoose.Schema({
 	content: [String],
 	comments: [
 		{
-			userName: String,
+			user: String,
 			text: String,
 			date: { type: Date, default: Date.now }
 		}

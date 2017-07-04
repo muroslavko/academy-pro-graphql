@@ -2,6 +2,7 @@ var express = require('express')
 var path = require('path');
 var http = require('http');
 var Schema = require('./schema')
+var othetSchema = require('./schemaOther')
 var graphQLHTTP = require('express-graphql')
 
 var index = require('./app/routes/index');
@@ -10,10 +11,19 @@ var app = express();
 
 app.use('/', index);
 
-app.use('/graphQL/', graphQLHTTP({
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use('/graphQL', graphQLHTTP({
   schema: Schema,
   pretty: true,
   graphiql: true
+}));
+
+app.use('/graphQLOther', graphQLHTTP({
+  schema: othetSchema.schema,
+  rootValue: othetSchema.root,
+  graphiql: true,
 }));
 
 var initializeDB = require('./app/db/db');

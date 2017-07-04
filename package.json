@@ -4,18 +4,13 @@
   "description": "GraphQL server for List",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "keywords": [
-    "GraphQL"
-  ],
-  "author": "muroslavko",
-  "license": "ISC",
   "dependencies": {
+    "body-parser": "~1.17.1",
     "express": "^4.13.3",
     "express-graphql": "^0.4.4",
-    "graphql": "^0.4.12",
+    "graphql": "^0.10.3",
     "mongoose": "^4.11.0",
     "pug": "^2.0.0-rc.2"
   }
