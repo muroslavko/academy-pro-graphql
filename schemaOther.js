@@ -28,6 +28,7 @@ type Post implements Base {
 }
   type Query {
     posts: [Post]
+	post(id: String!): Post
   }
 
 type Mutation {
@@ -38,30 +39,26 @@ type Mutation {
 
 // The root provides a resolver function for each API endpoint
 var root = {
-  posts: () => postService.getAllPosts(),
-  add: ({title, text}) =>{
-	  var item = {
-      title: title,
-      user: "some user",
-      text: text,
-      content: [],
-      comments: []
-    };
+	posts: () => postService.getAllPosts(),
+	post: ({id}) => postService.getPostById(id),
+	add: ({ title, text }) => {
+		var item = {
+			title: title,
+			user: "some user",
+			text: text,
+			content: [],
+			comments: []
+		};
 
-    return postService.addPost(item).then((post)=>{
-      return post;
-    });
-  }
-//   random: () => 
-//     return Math.random();
-//   },
-//   rollThreeDice: () => {
-//     return [1, 2, 3].map(_ => 1 + Math.floor(Math.random() * 6));
-//   },
+		return postService.addPost(item).then((post) => {
+			return post;
+		});
+	}
+
 };
 
 
 module.exports = {
-  schema: schema,
-  root: root
+	schema: schema,
+	root: root
 };

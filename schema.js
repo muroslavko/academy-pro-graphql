@@ -115,7 +115,6 @@ var MutationAdd = {
     return postService.addPost(item).then((post)=>{
       return post;
     });
-    //return TODOs;
   }
 };
 
